@@ -12,6 +12,6 @@ public class playermovement : MonoBehaviour
 
     private void Update()
     {
-        body.velocity = new vector2(input.getaxis, 0, 0);
+        //body.velocity = new vector2(input.getaxis, 0, 0);
     }
 }
