@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class playermovement : MonoBehaviour
 {
-    private Rigidbody2d body;
+    public Rigidbody2D rb;
 
-
-    private void Start() => body = getcomponent<rigidbody2D>();
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    } 
 
 
     private void Update()
