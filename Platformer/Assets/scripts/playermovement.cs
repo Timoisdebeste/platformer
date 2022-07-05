@@ -7,7 +7,8 @@ public class playermovement : MonoBehaviour
     public Rigidbody2D rb;
 
     public float sp;
-    public float jump;
+    public float jstr;
+    public bool grnd;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,8 +18,19 @@ public class playermovement : MonoBehaviour
     {
         rb.velocity = new Vector2(Input.GetAxis("Horizontal") * sp, rb.velocity.y);
 
-        if (Input.GetKey(KeyCode.Space))
-            rb.velocity = new Vector2(rb.velocity.x, jump);
+        if (Input.GetKey(KeyCode.Space) && grnd)
+            jump();
     }
 
+    private void jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jstr);
+        grnd = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "ground")
+            grnd = true;
+    }
 }
